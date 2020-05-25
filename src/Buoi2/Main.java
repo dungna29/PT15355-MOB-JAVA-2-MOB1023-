@@ -17,10 +17,10 @@ public class Main {
 
     static Scanner scr = new Scanner(System.in);
     static String _input = "";
+    static Iservice iservice = new Service();
 
     public static void main(String[] args) {
-        Iservice iservice = new Service();
-        iservice.addTeacher("", "", "", 0, "", "", _input, 0);              
+        // iservice.getListTeacher();
         do {
             Menu();
             System.out.print("hãy gọi 1 chức năng theo số đánh dấu :");
@@ -32,22 +32,21 @@ public class Main {
             } else {
                 switch (Integer.parseInt(_input)) {
                     case 1:
-                       
-                        if ( iservice.addTeacher("", "", "", 0, "", "", "", 0)) {
-                            System.out.println("Bạn đã thêm thành công");
-                        }else{
-                            System.out.println("Bạn đã thêm không thành công");
+                        System.out.print("Mời bạn nhập vào mã Giáo Viên cần xóa");
+                        String idgv = scr.nextLine();
+                        if (iservice.deleteTeacher(idgv)) {
+                            System.out.println("Đã xóa thành công");
+                        } else {
+                            System.out.println("Đã xóa không thành công");
                         }
                         break;
                     case 2:
-                        iservice.deleteTeacher("");
                         break;
                     case 3:
-                        iservice.editTeacher("");
                         break;
                     case 4:
                         for (Teacher x : iservice.getListTeacher()) {
-                           // System.out.println(x.OutputPerson());
+                            System.out.println(x.getTeacherID());
                         }
                         break;
                     case 5:
@@ -71,6 +70,10 @@ public class Main {
         System.out.println("| 4. Lấy Danh Sách Giáo Viên                             |");
         System.out.println("|11.thoát chương trình                                      |");
         System.out.println("------------------------------------------------------------|");
+    }
+
+    static void inDsGV() {
+
     }
 
 }

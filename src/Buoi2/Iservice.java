@@ -20,6 +20,8 @@ public interface Iservice {
     boolean editTeacher(String TeacherID);
 
     boolean deleteTeacher(String TeacherID);
+    
+    boolean findTeacher(String TeacherID);
 
     ArrayList<Teacher> getListTeacher();
 
