@@ -20,7 +20,7 @@ public class Main {
     static Iservice iservice = new Service();
 
     public static void main(String[] args) {
-        // iservice.getListTeacher();
+        iservice.getListTeacherFake();
         do {
             Menu();
             System.out.print("hãy gọi 1 chức năng theo số đánh dấu :");

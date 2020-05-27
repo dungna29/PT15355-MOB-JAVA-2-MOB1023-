@@ -38,8 +38,6 @@ public class Teacher extends Person {
     public void setHours(double hours) {
         this.hours = hours;
     }
-    
-    
 
     @Override
     String ValuatePerson() {
@@ -48,7 +46,8 @@ public class Teacher extends Person {
 
     @Override
     void OutputPerson() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.printf("tên GV :  %s %s %s năm sinh GV: %d mã GV : %s số giờ giảng dạy : %f \n địa chỉ : %s\n", getFirstName(), getMidleName(), getLastName(), getYearOfBird(), getTeacherID(), getHours(), getAddress());
+        System.out.println("------------------------------------------");
     }
 
 }

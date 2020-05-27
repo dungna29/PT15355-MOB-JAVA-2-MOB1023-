@@ -24,5 +24,7 @@ public interface Iservice {
     boolean findTeacher(String TeacherID);
 
     ArrayList<Teacher> getListTeacher();
+    
+    void getListTeacherFake();
 
 }

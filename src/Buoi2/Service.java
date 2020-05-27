@@ -65,6 +65,22 @@ public class Service implements Iservice {
 
     @Override
     public ArrayList<Teacher> getListTeacher() {
+        return arrListTeacher;
+    }
+   
+    
+    
+
+    @Override
+    public boolean findTeacher(String TeacherID) {
+        int temp = getIndexTeacher(TeacherID, arrListTeacher);
+        arrListTeacher.get(temp).OutputPerson();
+        return true;
+
+    }
+
+    @Override
+    public void getListTeacherFake(){
         //Lấy danh sách ảo
         Teacher tc1 = new Teacher("dungna29", 500, "Nguyen", "Anh", "Dung", 1989, "số 3 ngõ 125", "FPT POLY");
         Teacher tc2 = new Teacher("longnt25", 500, "Nguyen", "Thanh", "Long", 1989, "số 3 ngõ 125", "FPT POLY");
@@ -78,15 +94,6 @@ public class Service implements Iservice {
         arrListTeacher.add(tc4);
         arrListTeacher.add(tc5);
         arrListTeacher.add(tc6);
-        return arrListTeacher;
-    }
-
-    @Override
-    public boolean findTeacher(String TeacherID) {
-        int temp = getIndexTeacher(TeacherID, arrListTeacher);
-        arrListTeacher.get(temp).OutputPerson();
-        return true;
-
     }
 
 }
