@@ -9,12 +9,12 @@ package Buoi3_JAVA_Swing;
  *
  * @author LegendNguyen
  */
-public class JFrameHome extends javax.swing.JFrame {
+public class S6_JFrameHome extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJHome
      */
-    public JFrameHome() {
+    public S6_JFrameHome() {
         initComponents();
     }
 
@@ -71,21 +71,23 @@ public class JFrameHome extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S6_JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S6_JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S6_JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S6_JFrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameHome().setVisible(true);
+                new S6_JFrameHome().setVisible(true);
             }
         });
     }

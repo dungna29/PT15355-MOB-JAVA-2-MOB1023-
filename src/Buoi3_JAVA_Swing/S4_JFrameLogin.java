@@ -9,12 +9,12 @@ package Buoi3_JAVA_Swing;
  *
  * @author LegendNguyen
  */
-public class JFrameLogin extends javax.swing.JFrame {
+public class S4_JFrameLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJLogin
      */
-    public JFrameLogin() {
+    public S4_JFrameLogin() {
         initComponents();
         setLocationRelativeTo(null);// Khi chạy chương trình giúp chương trình hiển thị ở giữa màn hình
     }
@@ -118,7 +118,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         if (userInput.length() > 2 && passInput.length() > 2) {
             if (userInput.equals(user) && passInput.equals(pass)) {
                 lbl_thongbao.setText("Bạn đã đăng nhập thành công");
-                new JFrameHome().setVisible(true);// Gọi sang một form khác
+                new S6_JFrameHome().setVisible(true);// Gọi sang một form khác
                 this.dispose();// Đóng form hiện tại lại
             } else {
                 lbl_thongbao.setText("Bạn đã đăng nhập không thành công");
@@ -147,21 +147,23 @@ public class JFrameLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S4_JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S4_JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S4_JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S4_JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameLogin().setVisible(true);
+                new S4_JFrameLogin().setVisible(true);
             }
         });
     }

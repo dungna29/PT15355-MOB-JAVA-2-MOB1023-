@@ -18,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Nguyen Anh Dung
  */
-public class JFrameDoiMau extends javax.swing.JFrame {
+public class S3_JFrameButtonDoiMau extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameDoiMau
      */
-    public JFrameDoiMau() {
+    public S3_JFrameButtonDoiMau() {
         initComponents();
         setLocationRelativeTo(null);
         init();
@@ -301,20 +301,21 @@ public class JFrameDoiMau extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S3_JFrameButtonDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S3_JFrameButtonDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S3_JFrameButtonDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S3_JFrameButtonDoiMau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameDoiMau().setVisible(true);
+                new S3_JFrameButtonDoiMau().setVisible(true);
             }
         });
     }
