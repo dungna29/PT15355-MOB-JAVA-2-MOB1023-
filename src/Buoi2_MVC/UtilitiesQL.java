@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Buoi2;
-
+package Buoi2_MVC;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,6 +14,20 @@ public class UtilitiesQL {
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
+    }
+
+    boolean KiemTraKieuSo1(String input) {
+        int[] arrnumber = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        String[] arr = input.split("\\s+");
+        boolean temp  = true;
+        for (String x : arr) {
+            for (int y : arrnumber) {
+                if (Integer.parseInt(x) == y)  {
+                    temp  = true;
+                }
+            }
+        }
+        return temp;
     }
 
     boolean KiemTraKieuChu(String input) {

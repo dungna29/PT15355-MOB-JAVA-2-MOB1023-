@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Buoi3_JAVA_Swing;
+package Buoi4_Collection_Map;
 
+import Buoi3_JAVA_Swing.*;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,6 +43,10 @@ public class S11_JFrameTable extends javax.swing.JFrame {
         vtcRow2.add("0123456789");
         vtcData.add(vtcRow2);
         table_GiaoVien.setModel(new DefaultTableModel(vtcData, vtcHeader));
+        
+        
+        
+        
     }
 
     /**
@@ -150,6 +155,8 @@ public class S11_JFrameTable extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(S11_JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

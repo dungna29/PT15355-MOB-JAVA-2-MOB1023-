@@ -49,7 +49,7 @@ public class S8_JFrameJoptionPanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_check.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_check.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         btn_check.setText("CHECK");
         btn_check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +57,7 @@ public class S8_JFrameJoptionPanel extends javax.swing.JFrame {
             }
         });
 
-        txt_CheckSo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_CheckSo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         txt_CheckSo.setText("Nhập số nguyên");
 
         lbl_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -70,12 +70,12 @@ public class S8_JFrameJoptionPanel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_check, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txt_CheckSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
-                        .addComponent(lbl_ThongBao))
-                    .addComponent(btn_check, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addComponent(lbl_ThongBao)))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,8 +85,8 @@ public class S8_JFrameJoptionPanel extends javax.swing.JFrame {
                     .addComponent(txt_CheckSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_ThongBao))
                 .addGap(18, 18, 18)
-                .addComponent(btn_check, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140))
+                .addComponent(btn_check, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
 
         pack();
@@ -94,8 +94,9 @@ public class S8_JFrameJoptionPanel extends javax.swing.JFrame {
 
     private void btn_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkActionPerformed
         if (KiemTraKieuSo(txt_CheckSo.getText())) {
-           int a;
-            a = JOptionPane.showConfirmDialog(this, "Bạn đã nhập đúng kiểu số nguyên","DUNGNA29",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
+           int a = JOptionPane.showConfirmDialog(this, "Bạn đã nhập đúng kiểu số nguyên",
+                   "DUNGNA29",JOptionPane.YES_NO_CANCEL_OPTION,
+                   JOptionPane.INFORMATION_MESSAGE);
             if (a == JOptionPane.YES_OPTION) {
                 lbl_ThongBao.setText("Người dùng đã chọn Yes");
             }else if(a == JOptionPane.NO_OPTION){
@@ -108,10 +109,11 @@ public class S8_JFrameJoptionPanel extends javax.swing.JFrame {
         } else {
             JOptionPane.showConfirmDialog(this, "Bạn đã nhập kiểu ký tự vui lòng nhập đúng số nguyên");
         }
-
-//        if (KiemTraKieuSo(txt_CheckSo.getText())) {
+        
+//        String input = txt_CheckSo.getText(); // Lấy giá trị của ô text box
+//        if (KiemTraKieuSo(input)) {
 //            JOptionPane.showMessageDialog(this, "Bạn đã nhập đúng kiểu số nguyên");
-//        } else if (KiemTraKieuChu(txt_CheckSo.getText())) {
+//        } else if (KiemTraKieuChu(input)) {
 //            JOptionPane.showMessageDialog(this, "Bạn đã nhập kiểu chữ vui lòng nhập lại");
 //        } else {
 //            JOptionPane.showMessageDialog(this, "Bạn đã nhập kiểu ký tự vui lòng nhập đúng số nguyên");
