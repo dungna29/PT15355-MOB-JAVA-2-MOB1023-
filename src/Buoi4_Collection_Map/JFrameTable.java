@@ -6,6 +6,7 @@
 package Buoi4_Collection_Map;
 
 import Buoi3_JAVA_Swing.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,40 +14,58 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author LegendNguyen
  */
-public class S11_JFrameTable extends javax.swing.JFrame {
+public class JFrameTable extends javax.swing.JFrame {
+
+    ArrayList<Teacher> arrayListTeachers = new ArrayList<>();
 
     /**
      * Creates new form JFrameTable
      */
-    public S11_JFrameTable() {
+    public JFrameTable() {
         initComponents();
         tableGiaoVien();
     }
-    
+
     Vector vtcData;
+
     void tableGiaoVien() {
         //Tạo tên cột
-        Vector vtcHeader = new Vector();
-        vtcHeader.add("Mã Giáo Viên");
-        vtcHeader.add("Tên Giáo Viên");
-        vtcHeader.add("Số Điện Thoại");        
-        
-        vtcData = new Vector();
-        Vector vtcRow1 = new Vector();
-        vtcRow1.add("dungna29");
-        vtcRow1.add("Nguyễn Anh Dũng");
-        vtcRow1.add("0869858");
-        vtcData.add(vtcRow1);
-        Vector vtcRow2 = new Vector();
-        vtcRow2.add("hoangnh15");
-        vtcRow2.add("Nguyễn Hoàng Anh");
-        vtcRow2.add("0123456789");
-        vtcData.add(vtcRow2);
-        table_GiaoVien.setModel(new DefaultTableModel(vtcData, vtcHeader));
-        
-        
-        
-        
+//        Vector vtcHeader = new Vector();
+//        vtcHeader.add("Mã Giáo Viên");
+//        vtcHeader.add("Tên Giáo Viên");
+//        vtcHeader.add("Số Điện Thoại");
+//
+//        vtcData = new Vector();
+//        Vector vtcRow1 = new Vector();
+//        vtcRow1.add("dungna29");
+//        vtcRow1.add("Nguyễn Anh Dũng");
+//        vtcRow1.add("0869858");
+//        vtcData.add(vtcRow1);
+//        Vector vtcRow2 = new Vector();
+//        vtcRow2.add("hoangnh15");
+//        vtcRow2.add("Nguyễn Hoàng Anh");
+//        vtcRow2.add("0123456789");
+//        vtcData.add(vtcRow2);
+        // table_GiaoVien.setModel(new DefaultTableModel(vtcData, vtcHeader));
+
+        String column_names[] = {"Serial Number", "Medicine Name", "Dose", "Frequency"};        
+
+        Teacher tc1 = new Teacher("ph678", 500, "Nguyen", "Van", "Anh1", 1995, "số 3 ngõ 125");
+        Teacher tc2 = new Teacher("ph6781", 400, "Nguyen", "Van", "Anh12", 1997, "số 3 ngõ 125");
+        Teacher tc3 = new Teacher("ph6782", 100, "Nguyen", "Van", "Anh13", 2001, "số 3 ngõ 125");
+        arrayListTeachers.add(tc1);
+        arrayListTeachers.add(tc2);
+        arrayListTeachers.add(tc3);
+        DefaultTableModel defaultTableModel = (DefaultTableModel) table_GiaoVien.getModel();       
+        defaultTableModel.addColumn("DungNA1");
+        defaultTableModel.addColumn("Dung2");
+        defaultTableModel.setRowCount(0);  
+        for (Teacher x : arrayListTeachers) {
+            defaultTableModel.addRow(new Object[]{x.getTeacherID(), x.getFirstName()});
+
+        }
+         
+
     }
 
     /**
@@ -147,14 +166,18 @@ public class S11_JFrameTable extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(S11_JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(S11_JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(S11_JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(S11_JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -163,7 +186,7 @@ public class S11_JFrameTable extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new S11_JFrameTable().setVisible(true);
+                new JFrameTable().setVisible(true);
             }
         });
     }

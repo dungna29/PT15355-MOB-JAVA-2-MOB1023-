@@ -76,7 +76,9 @@ public class S1_Collection {
         //Collection được chia làm 2 loại List và Set
         // - List là Collection mà mỗi phần tử được phép xuất hiện nhiều lần và truy xuất chỉ bằng số
         //JavaList();
-        // - Set(Tập hợp) là Collection mà mỗi phần tử chỉ được phép xuất hiện 1 lần và không được phép truy xuất theo chỉ số (index)
+        
+        // - Set(Tập hợp) là Collection mà mỗi phần tử chỉ được phép xuất hiện 1 lần và không được phép truy xuất 
+        // theo chỉ số (index)
         //JavaSet();
         /* Map Interface
             - Trong java, map được sử dụng để lưu trữ và truy xuất dữ liệu theo 
@@ -101,12 +103,12 @@ public class S1_Collection {
         System.out.println("----- Khởi tạo 1 Set Kiểu String ------");
         // Tạo ra một hợp kiểu kiểu dữ liệu string
         Set<String> items = new HashSet<>();
-        items.add("A02"); // Thêm phần tử vào Set
-        items.add("D03");
-        items.add("D03"); // Phần tử loại bỏ vì trùng
-        items.add("01");
-        items.add("04");
-
+        items.add("Dũng"); // Thêm phần tử vào Set
+        items.add("Hoàng");
+        items.add("Hoàng"); // Phần tử loại bỏ vì trùng
+        items.add("Long");
+        items.add("Long");
+        System.out.println(items.toString());//In dùng câu lệnh toString
         // Dùng foreach để in tập hợp set ra màn hình
         for (String item : items) {
             System.out.print(item + " ");
@@ -416,7 +418,7 @@ public class S1_Collection {
         map.put(1, "dungna29");
         map.put(2, "longntph00532");
         map.put(3, "duongpt00555");
-
+        
         // In Map ra màn hình sử dụng phương thức method keySet()
         for (Integer key : map.keySet()) {
             String value = map.get(key);
@@ -442,7 +444,7 @@ public class S1_Collection {
         // cập nhật giá trị của phẩn tử có khóa là Samsung
         mapDienThoai.put("Samsung", 555.55);
         // Chuyển đổi map sang chuỗi và xuất ra
-        System.out.print(map.toString());
+        System.out.println(map.toString());
     }
 
 }
