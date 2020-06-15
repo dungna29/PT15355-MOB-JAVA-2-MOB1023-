@@ -5,17 +5,16 @@
  */
 package Buoi6_FileReader_FileWriter;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,7 +51,7 @@ public class s5_DocVaGhiDoiTuong {
         }
 
         //Lấy danh sách ảo
-        ArrayList<Teacher> arrListTeacher = new ArrayList<>();
+        List<Teacher> arrListTeacher = new ArrayList<>();
         Teacher tc1 = new Teacher("dungna29", 100, "Nguyen", "Anh", "Dung", 1989, "số 3 ngõ 125", "FPT POLY");
         Teacher tc2 = new Teacher("longnt25", 222, "Nguyen", "Thanh", "Long", 2000, "số 3 ngõ 125", "FPT POLY");
         Teacher tc3 = new Teacher("hoangnt99", 123, "Nguyen", "Dinh", "Hoang", 2001, "số 3 ngõ 125", "FPT POLY");
@@ -87,7 +86,7 @@ public class s5_DocVaGhiDoiTuong {
                 Logger.getLogger(s5_DocVaGhiDoiTuong.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
         FileInputStream fis = new FileInputStream(file);
         ObjectInputStream ois = new ObjectInputStream(fis);
 
@@ -96,7 +95,7 @@ public class s5_DocVaGhiDoiTuong {
 //            System.out.println(teacherIn.getFirstName() + teacherIn.getLastName());
 //        }
         Teacher teacherIn = new Teacher();
-        ArrayList<Teacher> arrListTeacherinput = new ArrayList<>();
+        List<Teacher> arrListTeacherinput = new ArrayList<>();       
         while (fis.available() > 0) {
             teacherIn = (Teacher) ois.readObject();
             arrListTeacherinput.add(teacherIn);
