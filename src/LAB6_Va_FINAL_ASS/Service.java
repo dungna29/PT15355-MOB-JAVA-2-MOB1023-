@@ -92,7 +92,7 @@ public class Service {
                 return i;
             }
         }
-        return -1;
+        return -1;//Khong tim thay
     }
 
     //Hàm này dùng để kiểm tra danh sách rỗng
