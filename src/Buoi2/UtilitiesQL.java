@@ -5,6 +5,9 @@
  */
 package Buoi2;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,11 +22,11 @@ public class UtilitiesQL {
     boolean KiemTraKieuSo1(String input) {
         int[] arrnumber = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         String[] arr = input.split("\\s+");
-        boolean temp  = true;
+        boolean temp = true;
         for (String x : arr) {
             for (int y : arrnumber) {
-                if (Integer.parseInt(x) == y)  {
-                    temp  = true;
+                if (Integer.parseInt(x) == y) {
+                    temp = true;
                 }
             }
         }
@@ -40,12 +43,23 @@ public class UtilitiesQL {
     String StringCamelCase(String input) {
         if (input != null) {
             String temp = input.trim().toLowerCase();
-            String[] arr = temp.split("\\s");            
-                String lastName = String.valueOf(arr[0].charAt(0)).toUpperCase() + arr[0].substring(1);               
-                return lastName;
-            
+            String[] arr = temp.split("\\s");
+            // Nguyen Anh           
+            String fullname;
+            List<String> lstFullName = new ArrayList<>();
+            for (int i = 0; i < arr.length; i++) {
+                lstFullName.add(String.valueOf(arr[0].charAt(0)).toUpperCase() + arr[0].substring(1));
+                return null;
+            }
+
         }
         return "không thể convert đươc chuỗi";
+    }
+    
+    Scanner scanner = new Scanner(System.in);
+    String NhapVao(){
+        String temp = scanner.nextLine();
+        return temp;        
     }
 
 }

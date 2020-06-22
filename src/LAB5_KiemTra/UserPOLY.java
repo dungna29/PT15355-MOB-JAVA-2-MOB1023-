@@ -5,18 +5,20 @@
  */
 package LAB5_KiemTra;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LegendNguyen
  */
-public class User {
+public class UserPOLY implements Serializable{
    private String userID;
-   private User pass;
+   private String pass;
 
-    public User() {
+    public UserPOLY() {
     }
 
-    public User(String userID, User pass) {
+    public UserPOLY(String userID, String pass) {
         this.userID = userID;
         this.pass = pass;
     }
@@ -29,11 +31,11 @@ public class User {
         this.userID = userID;
     }
 
-    public User getPass() {
+    public String getPass() {
         return pass;
     }
 
-    public void setPass(User pass) {
+    public void setPass(String pass) {
         this.pass = pass;
     }
     

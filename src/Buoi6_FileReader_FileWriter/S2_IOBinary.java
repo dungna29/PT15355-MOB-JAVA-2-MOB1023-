@@ -23,8 +23,8 @@ public class S2_IOBinary {
         //docKyTuTuBanPhim();
         //docChuoiKyTuTuBanPhim();
         //docFile();
-        //docNhieuByteFile();
-        //ghiNoiDungRaFile();
+        docNhieuByteFile();
+        ghiNoiDungRaFile();
         ghiNoiDungNhieuByteRaFile();
       
 
@@ -149,7 +149,7 @@ public class S2_IOBinary {
         byte[] b1 = new byte[] { 'F', 'P', 'T' };
         byte[] b2 = new byte[] { 'J', 'A', 'V', 'A' };
         byte[] b3 = new byte[] { 13, 10 }; // Xuống dòng mới - nghiên cứu xem tại sao
-        byte[] b4 = new byte[] { 'F', 'P', 'T' };
+        byte[] b4 = new byte[] { 'F', 'P', '1' };
  
         // Ghi cả các byte trong mảng byte[] by vào luồng
         os.write(b1);
@@ -165,5 +165,6 @@ public class S2_IOBinary {
         // Đóng lcông việc khi hoàn tất
         os.close();
     }
+    
 
 }

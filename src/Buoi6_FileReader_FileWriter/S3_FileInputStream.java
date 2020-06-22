@@ -42,6 +42,7 @@ public class S3_FileInputStream {
         // Đọc lần lượt các byte (8bit) trong luồng và lưu vào biến i
         // Khi đọc ra giá trị -1 nghĩa là vị trí cuối cùng
         while ((i = is.read()) != -1) {
+            System.out.println(is.read());
             System.out.print((char) i);
         }
         is.close();
