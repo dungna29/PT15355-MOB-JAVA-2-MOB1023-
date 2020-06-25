@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LAB6_Va_FINAL_ASS;
+package LAB8_DEMO;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +20,7 @@ import javax.swing.table.TableColumn;
  *
  * @author Nguyen Anh Dung
  */
-public class Main extends javax.swing.JFrame {
+public class ViewQuanLyTaiKhoan extends javax.swing.JFrame {
 
     Service service;
     UserPOLY userPOLY;
@@ -25,12 +28,71 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-    public Main() throws ClassNotFoundException, IOException {
+    public ViewQuanLyTaiKhoan() throws ClassNotFoundException, IOException {
         initComponents();
         service = new Service();
         setLocationRelativeTo(null);// Khi hiển thị chương trình sẽ hiển thị ở giữa
         setResizable(false);// Không cho phép Resize Form   
         loadTable();
+        GetDateTimeNow();
+        FunnyLoadText();
+    }
+
+    void GetDateTimeNow() {
+        Thread clock = new Thread() {
+            public void run() {
+                try {
+                    while (true) {
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                        //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        Calendar cal = Calendar.getInstance();
+                        lblTime.setText(dateFormat.format(cal.getTime()));
+                        Thread.sleep(1000);
+                    }
+
+                } catch (InterruptedException ex) {
+
+                }
+            }
+        };
+        clock.start();
+    }
+
+    void FunnyLoadText() {
+        Thread thread = new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        int dodaichuoi = lbl_LAB.getText().length();
+                        String chuoi = lbl_LAB.getText();
+                        String chuoimoi;
+                        char temp;
+                        int i = 0;
+                        if (i == dodaichuoi) {
+                            i = 0;
+                        }
+                        temp = chuoi.charAt(i);                       
+                        chuoimoi = chuoi.substring(1) + String.valueOf(temp);
+                        lbl_LAB.setText(chuoimoi);
+                        i++;
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        thread.start();
+    }
+
+    String daochuoi(String str) {
+        String[] temp = str.split(" ");
+        str = "";
+        str = temp[temp.length - 1] + " ";
+        for (int i = 0; i < temp.length - 1; i++) {
+            str = str + temp[i] + " ";
+        }
+        return str;
     }
 
     void lamMoi() {
@@ -40,7 +102,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     void loadTable() throws ClassNotFoundException, IOException {
-        String[] headerTable = {"Id", "Mật Khẩu"};
+        String[] headerTable = {"Id", "Mật Khẩu", "Loại Tài Khoản", "Trạng Thái"};
 
         for (int i = 0; i < tbl_User.getColumnCount(); i++) {
             TableColumn column = tbl_User.getTableHeader().getColumnModel().getColumn(i);
@@ -71,23 +133,24 @@ public class Main extends javax.swing.JFrame {
         txt_user = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_matkhau = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        Quyền = new javax.swing.JLabel();
         txt_mk2 = new javax.swing.JTextField();
         btn_LamMoi = new javax.swing.JButton();
-        Time = new javax.swing.JLabel();
+        lbl_Poly = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         btn_SuaTk = new javax.swing.JButton();
         btn_XoaTk = new javax.swing.JButton();
-        btn_TimKiem = new javax.swing.JButton();
-        btn_TaoTK = new javax.swing.JButton();
-        Quyền1 = new javax.swing.JLabel();
-        cbc_PhanQuyen = new javax.swing.JComboBox<>();
-        Quyền = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jLabel5 = new javax.swing.JLabel();
-        btn_ReadFile = new javax.swing.JButton();
         btn_SAVE = new javax.swing.JButton();
+        btn_TaoTK = new javax.swing.JButton();
+        btn_TimKiem = new javax.swing.JButton();
+        btn_ReadFile = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        cbc_PhanQuyen = new javax.swing.JComboBox<>();
+        lblTime = new javax.swing.JLabel();
+        lbl_LAB = new javax.swing.JLabel();
+        Quyền1 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_User = new javax.swing.JTable();
 
@@ -96,24 +159,24 @@ public class Main extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Tài Khoản:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 76, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         txt_user.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 76, 240, -1));
+        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 240, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Mật khẩu:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 116, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         txt_matkhau.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_matkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 116, 240, -1));
+        getContentPane().add(txt_matkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 240, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Nhắc lại MK:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 156, -1, -1));
+        Quyền.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Quyền.setText("Giới Tính:");
+        getContentPane().add(Quyền, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         txt_mk2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_mk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 156, 240, -1));
+        getContentPane().add(txt_mk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 240, -1));
 
         btn_LamMoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_LamMoi.setText("Làm Mới");
@@ -122,16 +185,16 @@ public class Main extends javax.swing.JFrame {
                 btn_LamMoiActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 26, 100, 46));
+        getContentPane().add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 100, 46));
 
-        Time.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Time.setForeground(new java.awt.Color(0, 0, 204));
-        Time.setText("Time");
-        getContentPane().add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 26, -1, -1));
+        lbl_Poly.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbl_Poly.setForeground(new java.awt.Color(0, 0, 204));
+        lbl_Poly.setText("FPT POLYTECHNIC");
+        getContentPane().add(lbl_Poly, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel11.setText("QUẢN LÝ TÀI KHOẢN");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 27, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         btn_SuaTk.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_SuaTk.setText("Sửa TK");
@@ -140,7 +203,7 @@ public class Main extends javax.swing.JFrame {
                 btn_SuaTkActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_SuaTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 134, 160, 46));
+        getContentPane().add(btn_SuaTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 160, 46));
 
         btn_XoaTk.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_XoaTk.setText("Xóa TK");
@@ -149,66 +212,7 @@ public class Main extends javax.swing.JFrame {
                 btn_XoaTkActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_XoaTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 76, 150, 46));
-
-        btn_TimKiem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_TimKiem.setText("Tìm Kiếm");
-        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_TimKiemActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 136, 150, 46));
-
-        btn_TaoTK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_TaoTK.setText("Tạo TK");
-        btn_TaoTK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_TaoTKActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_TaoTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 77, 160, 46));
-
-        Quyền1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Quyền1.setText("Phân Quyền:");
-        getContentPane().add(Quyền1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-
-        cbc_PhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbc_PhanQuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 70, -1));
-
-        Quyền.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Quyền.setText("Giới Tính:");
-        getContentPane().add(Quyền, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
-
-        jRadioButton2.setText("Nam");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
-
-        jRadioButton1.setText("Nữ");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel5.setText("ĐỀ THI LAB 6");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, -1));
-
-        btn_ReadFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_ReadFile.setText("READ FILE");
-        btn_ReadFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ReadFileActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_ReadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 150, 46));
+        getContentPane().add(btn_XoaTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 150, 46));
 
         btn_SAVE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_SAVE.setText("SAVE");
@@ -217,7 +221,71 @@ public class Main extends javax.swing.JFrame {
                 btn_SAVEActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_SAVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 150, 46));
+        getContentPane().add(btn_SAVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, 150, 46));
+
+        btn_TaoTK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_TaoTK.setText("Tạo TK");
+        btn_TaoTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TaoTKActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_TaoTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 160, 46));
+
+        btn_TimKiem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_TimKiem.setText("Tìm Kiếm");
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 150, 46));
+
+        btn_ReadFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ReadFile.setText("READ FILE");
+        btn_ReadFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ReadFileActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_ReadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 150, 46));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setText("Nhắc lại MK:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        cbc_PhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbc_PhanQuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 70, -1));
+
+        lblTime.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(0, 0, 204));
+        lblTime.setText("Time");
+        getContentPane().add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
+
+        lbl_LAB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbl_LAB.setForeground(new java.awt.Color(0, 0, 204));
+        lbl_LAB.setText("VietNam");
+        getContentPane().add(lbl_LAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
+
+        Quyền1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Quyền1.setText("Phân Quyền:");
+        getContentPane().add(Quyền1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        jRadioButton1.setText("Nữ");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
+
+        jRadioButton2.setText("Nam");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
 
         tbl_User.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,7 +300,7 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_User);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 760, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 752, 212));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,15 +330,15 @@ public class Main extends javax.swing.JFrame {
                         lamMoi();
                         loadTable();
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "Sửa thất bại");
                 }
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -291,34 +359,22 @@ public class Main extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Bạn đã xóa thành công");
                     loadTable();
                     lamMoi();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Bạn đã xóa thất bại");
                 }
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (a == JOptionPane.NO_OPTION) {
-            
+
         }
     }//GEN-LAST:event_btn_XoaTkActionPerformed
 
-    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
-        try {
-            String temp = JOptionPane.showInputDialog("Mời bạn nhập User cần tìm");
-            if (temp.isBlank()) {
-                return;
-            }
-            int a = service.getIndexUser(temp);
-            txt_user.setText(service.getListUserPOLYs().get(a).getUserID());
-            txt_matkhau.setText(service.getListUserPOLYs().get(a).getPass());
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_TimKiemActionPerformed
+    private void btn_SAVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SAVEActionPerformed
+
+    }//GEN-LAST:event_btn_SAVEActionPerformed
 
     private void btn_TaoTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TaoTKActionPerformed
         String userinput = txt_user.getText().trim();
@@ -335,28 +391,40 @@ public class Main extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Bạn đã thêm thất bại");
                 }
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btn_TaoTKActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        try {
+            String temp = JOptionPane.showInputDialog("Mời bạn nhập User cần tìm");
+            if (temp.isBlank()) {
+                return;
+            }
+            int a = service.getIndexUser(temp);
+            txt_user.setText(service.getListUserPOLYs().get(a).getUserID());
+            txt_matkhau.setText(service.getListUserPOLYs().get(a).getPass());
+        } catch (IOException ex) {
+            Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
 
     private void btn_ReadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReadFileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ReadFileActionPerformed
 
-    private void btn_SAVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SAVEActionPerformed
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    }//GEN-LAST:event_btn_SAVEActionPerformed
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,25 +443,28 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Main().setVisible(true);
+                    new ViewQuanLyTaiKhoan().setVisible(true);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ViewQuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -402,7 +473,6 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Quyền;
     private javax.swing.JLabel Quyền1;
-    private javax.swing.JLabel Time;
     private javax.swing.JButton btn_LamMoi;
     private javax.swing.JButton btn_ReadFile;
     private javax.swing.JButton btn_SAVE;
@@ -411,14 +481,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btn_TimKiem;
     private javax.swing.JButton btn_XoaTk;
     private javax.swing.JComboBox<String> cbc_PhanQuyen;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTime;
+    private javax.swing.JLabel lbl_LAB;
+    private javax.swing.JLabel lbl_Poly;
     private javax.swing.JTable tbl_User;
     private javax.swing.JTextField txt_matkhau;
     private javax.swing.JTextField txt_mk2;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LAB6_Va_FINAL_ASS;
+package LAB8_DEMO;
 
+import LAB6_Va_FINAL_ASS.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,7 +22,7 @@ import java.util.List;
 public class Service {
 
     List<UserPOLY> lstUser = new ArrayList<UserPOLY>();
-    static File file = new File("dataUserPoly.txt");
+    static File file = new File("dataUserPolyLAB8.txt");
 
     public Service() {
     }

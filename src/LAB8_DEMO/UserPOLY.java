@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LAB6_Va_FINAL_ASS;
+package LAB8_DEMO;
 
 
+import LAB6_Va_FINAL_ASS.*;
 import java.io.Serializable;
 
 /**
